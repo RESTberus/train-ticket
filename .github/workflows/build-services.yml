@@ -69,13 +69,20 @@ jobs:
             fi
             
             echo "Comparing HEAD against $BASE_SHA"
-            CHANGED_DIRS=$(git diff --name-only "$BASE_SHA" HEAD | cut -d/ -f1 | sort -u)
+            CHANGED_FILES=$(git diff --name-only "$BASE_SHA" HEAD)
             
-            for dir in $CHANGED_DIRS; do
-              if echo "$ALL_SERVICES" | grep -qx "$dir"; then
-                SERVICES+=("$dir")
-              fi
-            done
+            # Check for core files that should trigger all builds (Java parent POM, common library, build script)
+            if echo "$CHANGED_FILES" | grep -qE "^(pom\.xml|ts-common/|build_images\.sh|\.github/workflows/build-services\.yml)"; then
+              echo "Core files or common dependencies changed. Building all services."
+              SERVICES=($ALL_SERVICES)
+            else
+              CHANGED_DIRS=$(echo "$CHANGED_FILES" | cut -d/ -f1 | sort -u)
+              for dir in $CHANGED_DIRS; do
+                if echo "$ALL_SERVICES" | grep -qx "$dir"; then
+                  SERVICES+=("$dir")
+                fi
+              done
+            fi
           fi
           
           # Filter out empty entries and format as JSON
@@ -102,6 +109,18 @@ jobs:
       - uses: actions/checkout@v6
         with:
           lfs: true
+
+      - name: Set up JDK 8
+        if: hashFiles(format('{0}/pom.xml', matrix.service)) != ''
+        uses: actions/setup-java@v4
+        with:
+          java-version: '8'
+          distribution: 'temurin'
+          cache: 'maven'
+
+      - name: Build Java Service
+        if: hashFiles(format('{0}/pom.xml', matrix.service)) != ''
+        run: mvn clean package -pl ${{ matrix.service }} -am -DskipTests
 
       - name: Lowercase Repository Owner
         id: repo_owner
