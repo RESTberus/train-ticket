@@ -22,3 +22,22 @@ updates:
       docker-dependencies:
         patterns:
           - "*"
+
+  - package-ecosystem: "maven"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    groups:
+      maven-dependencies:
+        patterns:
+          - "*"
+
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    groups:
+      pip-dependencies:
+        patterns:
+          - "*"
+  
