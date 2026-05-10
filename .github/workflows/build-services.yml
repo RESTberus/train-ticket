@@ -1,0 +1,142 @@
+name: Build Microservices
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - 'v*'
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      build_all:
+        description: 'Build all services'
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      services: ${{ steps.set-matrix.outputs.services }}
+      any_changes: ${{ steps.set-matrix.outputs.any_changes }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Detect Changed Services
+        id: set-matrix
+        run: |
+          # Initialize variables
+          SERVICES=()
+          
+          # Find all directories containing a Dockerfile
+          ALL_SERVICES=$(find . -maxdepth 2 -name Dockerfile -exec dirname {} \; | sed 's|./||' | sort)
+          
+          # Determine if we should build all services
+          BUILD_ALL="${{ github.event.inputs.build_all }}"
+          if [ "${{ github.ref_type }}" = "tag" ]; then
+            BUILD_ALL="true"
+          fi
+          
+          if [ "$BUILD_ALL" = "true" ]; then
+            echo "Build all services requested."
+            SERVICES=($ALL_SERVICES)
+          else
+            echo "Detecting changed services..."
+            
+            # Determine base for comparison
+            if [ "${{ github.event_name }}" = "pull_request" ]; then
+              BASE_SHA="${{ github.event.pull_request.base.sha }}"
+            elif [ "${{ github.event_name }}" = "push" ] && [ "${{ github.event.before }}" != "0000000000000000000000000000000000000000" ]; then
+              BASE_SHA="${{ github.event.before }}"
+            else
+              # Fallback: compare against main branch if history is available
+              if git rev-parse origin/main >/dev/null 2>&1; then
+                BASE_SHA=$(git rev-parse origin/main)
+              else
+                # Default to last commit if main is not found
+                BASE_SHA="HEAD^"
+              fi
+            fi
+            
+            echo "Comparing HEAD against $BASE_SHA"
+            CHANGED_DIRS=$(git diff --name-only "$BASE_SHA" HEAD | cut -d/ -f1 | sort -u)
+            
+            for dir in $CHANGED_DIRS; do
+              if echo "$ALL_SERVICES" | grep -qx "$dir"; then
+                SERVICES+=("$dir")
+              fi
+            done
+          fi
+          
+          # Filter out empty entries and format as JSON
+          if [ ${#SERVICES[@]} -eq 0 ]; then
+            echo "No services to build."
+            echo "any_changes=false" >> $GITHUB_OUTPUT
+            echo "services=[]" >> $GITHUB_OUTPUT
+          else
+            JSON_SERVICES=$(printf '%s\n' "${SERVICES[@]}" | jq -R . | jq -s -c .)
+            echo "any_changes=true" >> $GITHUB_OUTPUT
+            echo "services=$JSON_SERVICES" >> $GITHUB_OUTPUT
+            echo "Build matrix: $JSON_SERVICES"
+          fi
+
+  build-and-push:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.any_changes == 'true'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        service: ${{ fromJson(needs.detect-changes.outputs.services) }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          lfs: true
+
+      - name: Lowercase Repository Owner
+        id: repo_owner
+        run: echo "owner=$(echo ${{ github.repository_owner }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract Docker metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ steps.repo_owner.outputs.owner }}/train-ticket/${{ matrix.service }}
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=sha
+
+      - name: Build and push image
+        uses: docker/build-push-action@v5
+        with:
+          context: ${{ matrix.service }}
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
