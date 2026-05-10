@@ -1,4 +1,4 @@
-FROM python:3-slim
+FROM python:3.14.4-alpine3.23
 
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' >/etc/timezone
 
