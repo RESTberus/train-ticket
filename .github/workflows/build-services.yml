@@ -6,9 +6,6 @@ on:
       - main
     tags:
       - 'v*'
-  pull_request:
-    branches:
-      - main
   workflow_dispatch:
     inputs:
       build_all:
@@ -110,18 +107,6 @@ jobs:
         with:
           lfs: true
 
-      - name: Set up JDK 8
-        if: hashFiles(format('{0}/pom.xml', matrix.service)) != ''
-        uses: actions/setup-java@v4
-        with:
-          java-version: '8'
-          distribution: 'temurin'
-          cache: 'maven'
-
-      - name: Build Java Service
-        if: hashFiles(format('{0}/pom.xml', matrix.service)) != ''
-        run: mvn clean package -pl ${{ matrix.service }} -am -DskipTests
-
       - name: Lowercase Repository Owner
         id: repo_owner
         run: echo "owner=$(echo ${{ github.repository_owner }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
@@ -143,17 +128,16 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/${{ steps.repo_owner.outputs.owner }}/train-ticket/${{ matrix.service }}
+          images: ghcr.io/${{ steps.repo_owner.outputs.owner }}/{{ matrix.service }}
           tags: |
             type=ref,event=branch
-            type=ref,event=pr
             type=semver,pattern={{version}}
-            type=sha
 
       - name: Build and push image
         uses: docker/build-push-action@v5
         with:
-          context: ${{ matrix.service }}
+          context: .
+          file: ${{ matrix.service }}/Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
