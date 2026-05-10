@@ -1,4 +1,4 @@
-n# Build stage
+# Build stage
 FROM maven:3.8.5-openjdk-8-slim AS build
 WORKDIR /app
 
