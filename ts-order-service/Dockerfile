@@ -8,10 +8,11 @@ RUN sed -i '/<modules>/,/<\/modules>/d' pom.xml
 
 # Copy the common library and the specific service
 COPY ts-common ./ts-common
+COPY ts-station-service ./ts-station-service
 COPY ts-order-service ./ts-order-service
 
 # Add ONLY ts-common and the specific service back to the modules section so Maven can find them
-RUN sed -i '/<\/project>/i <modules><module>ts-common</module><module>ts-order-service</module></modules>' pom.xml
+RUN sed -i '/<\/project>/i <modules><module>ts-common</module><module>ts-station-service</module><module>ts-order-service</module></modules>' pom.xml
 
 # Build the project
 RUN mvn package -pl ts-order-service -am -DskipTests
