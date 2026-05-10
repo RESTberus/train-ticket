@@ -1,0 +1,15 @@
+**/.git
+**/.github
+**/target
+**/node_modules
+**/*.log
+**/*.tmp
+.gitignore
+README.md
+LICENSE
+diagrams/
+ts-ui-test/
+build_images.sh
+refactor-docker-builds.md
+docker-compose.yml
+dev.jvm.conf
