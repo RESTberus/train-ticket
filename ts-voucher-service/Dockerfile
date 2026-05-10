@@ -1,15 +1,14 @@
-FROM python:3
+FROM python:3-slim
 
-RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' >/etc/timezone
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' >/etc/timezone
 
-RUN mkdir -p /app
 WORKDIR /app
 
-COPY requirements.txt ./
-RUN pip install cryptography
-RUN pip install --no-cache-dir -r requirements.txt
+COPY ts-voucher-service/requirements.txt ./
+RUN pip install --no-cache-dir cryptography && \
+    pip install --no-cache-dir -r requirements.txt
 
-ADD ./server.py /app/
+COPY ts-voucher-service/server.py ./
 CMD [ "python", "-u", "server.py" ]
 
 EXPOSE 16101

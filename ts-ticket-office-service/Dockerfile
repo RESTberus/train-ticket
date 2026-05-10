@@ -1,17 +1,17 @@
-FROM node
+FROM node:18-alpine
 
-RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' >/etc/timezone
+RUN apk --no-cache add tzdata && \
+    cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
+    echo "Asia/Shanghai" > /etc/timezone
 
-RUN mkdir -p /app
 WORKDIR /app
 
-#ADD ./node_modules /app/node_modules
-ADD ./package.json /app/
-ADD ./public /app/public
-RUN npm install
+COPY ts-ticket-office-service/package.json ./
+COPY ts-ticket-office-service/public ./public
+RUN npm install --production
 
-ADD ./bin /app/bin
-ADD ./app.js /app/
+COPY ts-ticket-office-service/bin ./bin
+COPY ts-ticket-office-service/app.js ./
 CMD [ "npm", "start" ]
 
 EXPOSE 16108
