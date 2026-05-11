@@ -3,7 +3,12 @@ spring:
     name: ts-order-service
   data:
     mongodb:
-      uri: mongodb://localhost/ts
+      # uri: mongodb://localhost/ts
+      host: localhost
+      #      username: user
+      #      password: ${MONGODB_PASSWORD}
+      database: ts
+      port: 27017
 
 server:
   port: 12031

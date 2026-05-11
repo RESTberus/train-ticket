@@ -3,7 +3,12 @@ spring:
     name: ts-station-service
   data:
     mongodb:
-      uri: mongodb://ts-station-mongo:27017/ts
+      # uri: mongodb://ts-station-mongo:27017/ts
+      host: ts-station-mongo
+      #      username: user
+      #      password: ${MONGODB_PASSWORD}
+      database: ts
+      port: 27017
 
 server:
   port: 12345
