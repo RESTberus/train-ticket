@@ -3,7 +3,9 @@ spring:
     name: ts-user-service
   data:
     mongodb:
-      uri: mongodb://localhost/ts
+      host: localhost
+      port: 27017
+      database: ts
 
 server:
   port: 12342
