@@ -70,7 +70,9 @@ public class LoginUserTest {
 
     @DynamicPropertySource
     static void properties(DynamicPropertyRegistry registry) {
-        registry.add("spring.data.mongodb.uri", () -> mongo.getReplicaSetUrl());
+        registry.add("spring.data.mongodb.host", mongo::getHost);
+        registry.add("spring.data.mongodb.port", mongo::getFirstMappedPort);
+        registry.add("spring.data.mongodb.database", () -> "ts");
         registry.add("ts.verification.code.service.url", () -> "localhost");
         registry.add("ts.verification.code.service.port",() -> "15678");
     }

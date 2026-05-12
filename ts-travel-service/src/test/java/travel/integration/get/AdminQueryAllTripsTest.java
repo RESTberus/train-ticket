@@ -81,8 +81,9 @@ public class AdminQueryAllTripsTest {
     @DynamicPropertySource
     static void properties(DynamicPropertyRegistry registry) {
         mongo.start();
-        String mongoUri = mongo.getReplicaSetUrl();
-        registry.add("spring.data.mongodb.uri", () -> mongoUri);
+        registry.add("spring.data.mongodb.host", mongo::getHost);
+        registry.add("spring.data.mongodb.port", mongo::getFirstMappedPort);
+        registry.add("spring.data.mongodb.database", () -> "ts");
         registry.add("ts.route.service.url", routeServiceContainer::getHost);
         registry.add("ts.route.service.port", () -> routeServiceContainer.getMappedPort(11178));
         registry.add("ts.train.service.url", trainServiceContainer::getHost);

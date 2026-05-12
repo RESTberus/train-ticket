@@ -45,8 +45,9 @@ public class GetAllTrainFoodTest {
     @DynamicPropertySource
     static void properties(DynamicPropertyRegistry registry) {
         mongo.start();
-        String mongoUri = mongo.getReplicaSetUrl();
-        registry.add("spring.data.mongodb.uri", () -> mongoUri);
+        registry.add("spring.data.mongodb.host", mongo::getHost);
+        registry.add("spring.data.mongodb.port", mongo::getFirstMappedPort);
+        registry.add("spring.data.mongodb.database", () -> "ts");
     }
 
     @BeforeEach

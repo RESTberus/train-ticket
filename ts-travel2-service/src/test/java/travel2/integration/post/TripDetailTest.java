@@ -186,8 +186,9 @@ public class TripDetailTest {
     @DynamicPropertySource
     static void properties(DynamicPropertyRegistry registry) {
         mongo.start();
-        String mongoUri = mongo.getReplicaSetUrl();
-        registry.add("spring.data.mongodb.uri", () -> mongoUri);
+        registry.add("spring.data.mongodb.host", mongo::getHost);
+        registry.add("spring.data.mongodb.port", mongo::getFirstMappedPort);
+        registry.add("spring.data.mongodb.database", () -> "ts");
         registry.add("ts.train.service.url", trainServiceContainer::getHost);
         registry.add("ts.train.service.port", () -> trainServiceContainer.getMappedPort(14567));
         registry.add("ts.seat.service.url", seatServiceContainer::getHost);

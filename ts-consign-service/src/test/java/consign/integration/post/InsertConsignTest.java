@@ -63,8 +63,9 @@ public class InsertConsignTest {
     @DynamicPropertySource
     static void properties(DynamicPropertyRegistry registry) {
         mongo.start();
-        String mongoUri = mongo.getReplicaSetUrl();
-        registry.add("spring.data.mongodb.uri", () -> mongoUri);
+        registry.add("spring.data.mongodb.host", mongo::getHost);
+        registry.add("spring.data.mongodb.port", mongo::getFirstMappedPort);
+        registry.add("spring.data.mongodb.database", () -> "ts");
         registry.add("ts.consign.price.service.url", consignPriceContainer::getHost);
         registry.add("ts.consign.price.service.port", () -> consignPriceContainer.getMappedPort(16110));
     }

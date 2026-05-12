@@ -82,8 +82,9 @@ public class CheckAccountIdTest {
     @DynamicPropertySource
     static void properties(DynamicPropertyRegistry registry) {
         mongo.start();
-        String mongoUri = mongo.getReplicaSetUrl();
-        registry.add("spring.data.mongodb.uri", () -> mongoUri);
+        registry.add("spring.data.mongodb.host", mongo::getHost);
+        registry.add("spring.data.mongodb.port", mongo::getFirstMappedPort);
+        registry.add("spring.data.mongodb.database", () -> "ts");
         registry.add("ts.order.service.url", orderServiceContainer::getHost);
         registry.add("ts.order.service.port", () -> orderServiceContainer.getMappedPort(12031));
         registry.add("ts.order.other.service.url", orderOtherServiceContainer::getHost);
