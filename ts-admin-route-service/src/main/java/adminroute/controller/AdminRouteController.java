@@ -7,8 +7,6 @@ import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 
-import edu.fudan.common.util.Response;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -21,8 +19,8 @@ import static org.springframework.http.ResponseEntity.ok;
  */
 @RestController
 @RequestMapping("/api/v1/adminrouteservice")
-@DefaultProperties(defaultFallback = "fallback", commandProperties = {
-    @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000")
+@DefaultProperties(commandProperties = {
+    @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "500")
 })
 public class AdminRouteController
 {
@@ -55,10 +53,5 @@ public class AdminRouteController
     public HttpEntity deleteRoute(@PathVariable String routeId, @RequestHeader HttpHeaders headers)
     {
         return ok(adminRouteService.deleteRoute(routeId, headers));
-    }
-
-    private HttpEntity fallback()
-    {
-        return ok(new Response<>());
     }
 }

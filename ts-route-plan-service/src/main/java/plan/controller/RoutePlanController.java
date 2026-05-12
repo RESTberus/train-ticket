@@ -4,8 +4,6 @@ import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 
-import edu.fudan.common.util.Response;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +21,8 @@ import static org.springframework.http.ResponseEntity.ok;
  */
 @RestController
 @RequestMapping("/api/v1/routeplanservice")
-@DefaultProperties(defaultFallback = "fallback", commandProperties = {
-    @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000")
+@DefaultProperties(commandProperties = {
+    @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "500")
 })
 public class RoutePlanController
 {
@@ -66,8 +64,4 @@ public class RoutePlanController
         return ok(routePlanService.searchMinStopStations(info, headers));
     }
 
-    private HttpEntity fallback()
-    {
-        return ok(new Response<>());
-    }
 }

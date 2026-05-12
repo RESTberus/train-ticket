@@ -6,7 +6,6 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 
 import consign.entity.Consign;
 import consign.service.ConsignService;
-import edu.fudan.common.util.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -22,8 +21,8 @@ import static org.springframework.http.ResponseEntity.ok;
  */
 @RestController
 @RequestMapping("/api/v1/consignservice")
-@DefaultProperties(defaultFallback = "fallback", commandProperties = {
-    @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000")
+@DefaultProperties(commandProperties = {
+    @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "500")
 })
 public class ConsignController
 {
@@ -69,10 +68,5 @@ public class ConsignController
     public HttpEntity findByConsignee(@PathVariable String consignee, @RequestHeader HttpHeaders headers)
     {
         return ok(service.queryByConsignee(consignee, headers));
-    }
-
-    private HttpEntity fallback()
-    {
-        return ok(new Response<>());
     }
 }

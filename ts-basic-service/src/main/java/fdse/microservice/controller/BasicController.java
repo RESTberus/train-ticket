@@ -21,8 +21,8 @@ import static org.springframework.http.ResponseEntity.ok;
  */
 @RestController
 @RequestMapping("/api/v1/basicservice")
-@DefaultProperties(defaultFallback = "fallback", commandProperties = {
-    @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000")
+@DefaultProperties(commandProperties = {
+    @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "500")
 })
 public class BasicController
 {
@@ -49,10 +49,5 @@ public class BasicController
     {
         // String id
         return ok(service.queryForStationId(stationName, headers));
-    }
-
-    private HttpEntity fallback()
-    {
-        return ok(new Response<>());
     }
 }

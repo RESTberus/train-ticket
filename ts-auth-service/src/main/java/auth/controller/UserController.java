@@ -45,8 +45,8 @@ public class UserController
     }
 
     @PostMapping("/login")
-    @HystrixCommand(fallbackMethod = "getTokenFallback", commandProperties = {
-        @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000")
+    @HystrixCommand(commandProperties = {
+        @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "500")
     })
     public ResponseEntity<Response> getToken(@RequestBody BasicAuthDto dao, @RequestHeader HttpHeaders headers)
     {
@@ -63,10 +63,5 @@ public class UserController
     public ResponseEntity<Response> deleteUserById(@PathVariable String userId, @RequestHeader HttpHeaders headers)
     {
         return ResponseEntity.ok(userService.deleteByUserId(UUID.fromString(userId), headers));
-    }
-
-    private ResponseEntity<Response> getTokenFallback(@RequestBody BasicAuthDto dao, @RequestHeader HttpHeaders headers)
-    {
-        return new ResponseEntity<>(new Response<>(0, "Verification failed.", null), HttpStatus.OK);
     }
 }

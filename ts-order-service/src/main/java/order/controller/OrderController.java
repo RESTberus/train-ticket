@@ -3,7 +3,6 @@ package order.controller;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 
-import edu.fudan.common.util.Response;
 import order.entity.*;
 import order.service.OrderService;
 
@@ -77,8 +76,8 @@ public class OrderController
 
     @CrossOrigin(origins = "*")
     @PostMapping(path = "/order/refresh")
-    @HystrixCommand(fallbackMethod = "queryOrdersForRefreshFallback", commandProperties = {
-        @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000")
+    @HystrixCommand(commandProperties = {
+        @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "500")
     })
     public HttpEntity queryOrdersForRefresh(@RequestBody OrderInfo qi,
         @RequestHeader HttpHeaders headers)
@@ -182,10 +181,5 @@ public class OrderController
         OrderController.LOGGER.info("[Order Other Service][Find All Order]");
         // ArrayList<Order>
         return ok(orderService.getAllOrders(headers));
-    }
-
-    private HttpEntity queryOrdersForRefreshFallback(@RequestBody OrderInfo qi, @RequestHeader HttpHeaders headers)
-    {
-        return ok(new Response<>());
     }
 }

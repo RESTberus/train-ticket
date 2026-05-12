@@ -4,7 +4,6 @@ import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 
-import edu.fudan.common.util.Response;
 import execute.serivce.ExecuteService;
 
 import org.slf4j.Logger;
@@ -21,8 +20,8 @@ import static org.springframework.http.ResponseEntity.ok;
  */
 @RestController
 @RequestMapping("/api/v1/executeservice")
-@DefaultProperties(defaultFallback = "fallback", commandProperties = {
-    @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000")
+@DefaultProperties(commandProperties = {
+    @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "500")
 })
 public class ExecuteControlller
 {
@@ -55,10 +54,5 @@ public class ExecuteControlller
         ExecuteControlller.LOGGER.info("[Execute Service][Collect] Id: {}", orderId);
         // null
         return ok(executeService.ticketCollect(orderId, headers));
-    }
-
-    private HttpEntity fallback()
-    {
-        return ok(new Response<>());
     }
 }

@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 
-import edu.fudan.common.util.Response;
 import foodsearch.entity.FoodOrder;
 import foodsearch.service.FoodService;
 
@@ -79,8 +78,8 @@ public class FoodController
 
     // This relies on a lot of other services, not completely modified
     @GetMapping(path = "/foods/{date}/{startStation}/{endStation}/{tripId}")
-    @HystrixCommand(fallbackMethod = "getAllFoodFallback", commandProperties = {
-        @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000")
+    @HystrixCommand(commandProperties = {
+        @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "500")
     })
     public HttpEntity getAllFood(@PathVariable String date, @PathVariable String startStation,
         @PathVariable String endStation, @PathVariable String tripId,
@@ -88,12 +87,5 @@ public class FoodController
     {
         FoodController.LOGGER.info("[Food Service]Get the Get Food Request!");
         return ok(foodService.getAllFood(date, startStation, endStation, tripId, headers));
-    }
-
-    private HttpEntity getAllFoodFallback(@PathVariable String date, @PathVariable String startStation,
-        @PathVariable String endStation, @PathVariable String tripId,
-        @RequestHeader HttpHeaders headers)
-    {
-        return ok(new Response<>());
     }
 }

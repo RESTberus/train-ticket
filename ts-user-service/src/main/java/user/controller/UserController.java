@@ -21,7 +21,6 @@ import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 
-import edu.fudan.common.util.Response;
 import user.dto.UserDto;
 import user.service.UserService;
 
@@ -32,8 +31,8 @@ import static org.springframework.http.ResponseEntity.ok;
  */
 @RestController
 @RequestMapping("/api/v1/userservice/users")
-@DefaultProperties(defaultFallback = "fallback", commandProperties = {
-    @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000")
+@DefaultProperties(commandProperties = {
+    @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "500")
 })
 public class UserController
 {
@@ -47,33 +46,33 @@ public class UserController
     }
 
     @GetMapping
-    public ResponseEntity<Response> getAllUser(@RequestHeader HttpHeaders headers)
+    public ResponseEntity getAllUser(@RequestHeader HttpHeaders headers)
     {
         return ok(userService.getAllUsers(headers));
     }
 
     @GetMapping("/{userName}")
-    public ResponseEntity<Response> getUserByUserName(@PathVariable String userName, @RequestHeader HttpHeaders headers)
+    public ResponseEntity getUserByUserName(@PathVariable String userName, @RequestHeader HttpHeaders headers)
     {
         return ok(userService.findByUserName(userName, headers));
     }
 
     @GetMapping("/id/{userId}")
-    public ResponseEntity<Response> getUserByUserId(@PathVariable String userId, @RequestHeader HttpHeaders headers)
+    public ResponseEntity getUserByUserId(@PathVariable String userId, @RequestHeader HttpHeaders headers)
     {
         return ok(userService.findByUserId(userId, headers));
     }
 
     @PostMapping("/register")
     @HystrixCommand
-    public ResponseEntity<Response> registerUser(@RequestBody UserDto userDto, @RequestHeader HttpHeaders headers)
+    public ResponseEntity registerUser(@RequestBody UserDto userDto, @RequestHeader HttpHeaders headers)
     {
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.saveUser(userDto, headers));
     }
 
     @DeleteMapping("/{userId}")
     @HystrixCommand
-    public ResponseEntity<Response> deleteUserById(@PathVariable String userId,
+    public ResponseEntity deleteUserById(@PathVariable String userId,
         @RequestHeader HttpHeaders headers)
     {
         // only admin token can delete
@@ -81,14 +80,9 @@ public class UserController
     }
 
     @PutMapping
-    public ResponseEntity<Response> updateUser(@RequestBody UserDto user,
+    public ResponseEntity updateUser(@RequestBody UserDto user,
         @RequestHeader HttpHeaders headers)
     {
         return ok(userService.updateUser(user, headers));
-    }
-
-    private ResponseEntity<Response> fallback()
-    {
-        return ok(new Response<>());
     }
 }

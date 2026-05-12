@@ -4,7 +4,6 @@ import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 
-import edu.fudan.common.util.Response;
 import inside_payment.entity.*;
 import inside_payment.service.InsidePaymentService;
 
@@ -22,8 +21,8 @@ import static org.springframework.http.ResponseEntity.ok;
  */
 @RestController
 @RequestMapping("/api/v1/inside_pay_service")
-@DefaultProperties(defaultFallback = "fallback", commandProperties = {
-    @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000")
+@DefaultProperties(commandProperties = {
+    @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "500")
 })
 public class InsidePaymentController
 {
@@ -91,8 +90,4 @@ public class InsidePaymentController
         return ok(service.queryAddMoney(headers));
     }
 
-    private HttpEntity fallback()
-    {
-        return ok(new Response<>());
-    }
 }

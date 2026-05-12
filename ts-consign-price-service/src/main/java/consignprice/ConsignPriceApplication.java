@@ -10,6 +10,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.integration.annotation.IntegrationComponentScan;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.client.RestTemplate;
+import java.time.Duration;
 
 
 import java.util.Date;
@@ -34,6 +35,9 @@ public class ConsignPriceApplication
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder builder)
     {
-        return builder.build();
+        return builder
+                .setConnectTimeout(Duration.ofMillis(100))
+                .setReadTimeout(Duration.ofMillis(200))
+                .build();
     }
 }

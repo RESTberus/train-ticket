@@ -10,6 +10,8 @@ import org.springframework.integration.annotation.IntegrationComponentScan;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.Duration;
+
 
 /**
  * @author fdse
@@ -29,6 +31,9 @@ public class AdminBasicInfoApplication
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder builder)
     {
-        return builder.build();
+        return builder
+                .setConnectTimeout(Duration.ofMillis(100))
+                .setReadTimeout(Duration.ofMillis(200))
+                .build();
     }
 }
