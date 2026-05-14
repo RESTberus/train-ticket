@@ -259,3 +259,5 @@ scratch/
 .m2/
 
 *.bak
+parse_surefire_reports.py
+surefire_report.txt
