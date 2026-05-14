@@ -12,6 +12,13 @@ server:
   port: 14568  # HTTP (Tomcat) port
 
 spring:
+  sleuth:
+    sampler:
+      probability: 1.0
+    baggage:
+      correlation-fields: x-request-id
+    propagation:
+      type: b3
   application:
     name: ts-preserve-service
 

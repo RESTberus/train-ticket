@@ -2,6 +2,13 @@ server:
   port: 16114
 
 spring:
+  sleuth:
+    sampler:
+      probability: 1.0
+    baggage:
+      correlation-fields: x-request-id
+    propagation:
+      type: b3
   application:
     name: ts-admin-travel-service
 
