@@ -29,8 +29,8 @@ public class AssuranceApplication
     public RestTemplate restTemplate(RestTemplateBuilder builder)
     {
         return builder
-                .setConnectTimeout(Duration.ofMillis(100))
-                .setReadTimeout(Duration.ofMillis(200))
+                .setConnectTimeout(Duration.ofMillis(200))
+                .setReadTimeout(Duration.ofMillis(300))
                 .build();
     }
 }
