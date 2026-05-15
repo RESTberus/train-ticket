@@ -9,10 +9,3 @@ spring:
       host: ts-user-mongo
       database: ts-user-mongo
       port: 27017
-
-
-#opentracing:
-#  jaeger:
-#    udp-sender:
-#      host: jaeger
-#      port: 6831

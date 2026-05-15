@@ -19,12 +19,4 @@ spring:
 
 # HTTP Server
 server:
-  port: 12345  # HTTP (Tomcat) port
-
-
-# Uncomment and configure the following if you need tracing
-# opentracing:
-#   jaeger:
-#     udp-sender:
-#       host: jaeger
-#       port: 6831
+ port: 12345  # HTTP (Tomcat) port

@@ -12,11 +12,3 @@ spring:
       type: b3
   application:
     name: ts-travel-plan-service
-
-
-
-#opentracing:
-#  jaeger:
-#    udp-sender:
-#      host: jaeger
-#      port: 6831

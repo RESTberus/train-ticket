@@ -866,21 +866,6 @@ services:
     networks:
       - my-network
 
-  jaeger:
-    image: jaegertracing/all-in-one:1.29.0
-    ports:
-      - 16686:16686
-    deploy:
-      replicas: 1
-      restart_policy:
-        condition: on-failure
-      resources:
-        limits:
-          cpus: '0.5'
-          memory: 300M
-    networks:
-      - my-network
-
 networks:
   my-network:
     # driver: overlay

@@ -43,10 +43,3 @@ spring:
 #          destination: ts-order-other-exchange
 #          contentType: application/json
 #          binder: rabbit
-
-
-#opentracing:
-#  jaeger:
-#    udp-sender:
-#      host: jaeger
-#      port: 6831

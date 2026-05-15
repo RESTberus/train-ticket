@@ -8,10 +8,3 @@ spring:
       host: ts-auth-mongo
       database: ts-auth-mongo
       port: 27017
-
-
-#opentracing:
-#  jaeger:
-#    udp-sender:
-#      host: jaeger
-#      port: 6831

@@ -11,10 +11,3 @@ spring:
       type: b3
   application:
     name: ts-admin-basic-info-service
-
-
-#opentracing:
-#  jaeger:
-#    udp-sender:
-#      host: jaeger
-#      port: 6831
