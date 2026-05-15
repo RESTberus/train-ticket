@@ -150,5 +150,8 @@ jobs:
           platforms: ${{ env.PLATFORMS }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=gha,scope=${{ matrix.service }}
+          cache-from: |
+            type=gha,scope=${{ matrix.service }}
+            type=registry,ref=ghcr.io/${{ steps.repo_owner.outputs.owner }}/${{ matrix.service }}:latest
+            type=registry,ref=ghcr.io/${{ steps.repo_owner.outputs.owner }}/${{ matrix.service }}:${{ github.ref_name }}
           cache-to: type=gha,mode=max,scope=${{ matrix.service }}
