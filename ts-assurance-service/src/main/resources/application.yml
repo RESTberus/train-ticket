@@ -2,6 +2,9 @@ server:
   port: 18888
 
 spring:
+  main:
+    banner-mode: "off"
+    lazy-initialization: true
   sleuth:
     sampler:
       probability: 1.0

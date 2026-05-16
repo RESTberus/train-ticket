@@ -1,8 +1,10 @@
-# HTTP Server
 server:
-  port: 16346  # HTTP (Tomcat) port
+  port: 16346 # HTTP (Tomcat) port
 
 spring:
+  main:
+    banner-mode: "off"
+    lazy-initialization: true
   sleuth:
     sampler:
       probability: 1.0
@@ -15,7 +17,5 @@ spring:
   data:
     mongodb:
       host: ts-travel2-mongo
-      #      username: user
-      #      password: ${MONGODB_PASSWORD}
       database: ts
       port: 27017

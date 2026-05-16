@@ -1,4 +1,7 @@
 spring:
+  main:
+    banner-mode: "off"
+    lazy-initialization: true
   sleuth:
     sampler:
       probability: 1.0
@@ -18,4 +21,4 @@ spring:
 
 # HTTP Server
 server:
-  port: 15679  # HTTP (Tomcat) port
+  port: 15679 # HTTP (Tomcat) port

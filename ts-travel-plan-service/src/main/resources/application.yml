@@ -1,8 +1,11 @@
 # HTTP Server
 server:
-  port: 14322  # HTTP (Tomcat) port
+  port: 14322 # HTTP (Tomcat) port
 
 spring:
+  main:
+    banner-mode: "off"
+    lazy-initialization: true
   sleuth:
     sampler:
       probability: 1.0

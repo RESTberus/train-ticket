@@ -1,8 +1,11 @@
 # HTTP Server
 server:
-  port: 18886  # HTTP (Tomcat) port
+  port: 18886 # HTTP (Tomcat) port
 
 spring:
+  main:
+    banner-mode: "off"
+    lazy-initialization: true
   sleuth:
     sampler:
       probability: 1.0
