@@ -60,7 +60,7 @@ public class QueryOrdersForRefreshTest {
     @Container
     public static GenericContainer<?> stationContainer = new GenericContainer<>(DockerImageName.parse("local/ts-station-service:0.1"))
             .withImagePullPolicy(PullPolicy.defaultPolicy())
-            .withExposedPorts(12345)
+            .withExposedPorts(12348)
             .withNetwork(network)
             .withNetworkAliases("ts-station-service")
             .dependsOn(stationServiceMongoDBContainer);
@@ -72,7 +72,7 @@ public class QueryOrdersForRefreshTest {
         registry.add("spring.data.mongodb.port", mongo::getFirstMappedPort);
         registry.add("spring.data.mongodb.database", () -> "ts");
         registry.add("ts.station.service.url", stationContainer::getHost);
-        registry.add("ts.station.service.port", () -> stationContainer.getMappedPort(12345));
+        registry.add("ts.station.service.port", () -> stationContainer.getMappedPort(12348));
     }
 
     @BeforeEach

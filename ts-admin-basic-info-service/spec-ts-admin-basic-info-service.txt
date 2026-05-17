@@ -25,22 +25,22 @@ ENDPOINT: POST "/api/v1/adminbasicservice/adminbasic/contacts", PARAM: Contacts 
 END
 
 ENDPOINT: GET "/api/v1/adminbasicservice/adminbasic/stations"
-    PERFORM REQUEST GET "http://ts-station-service:12345/api/v1/stationservice/stations" to load all the stations from station service
+    PERFORM REQUEST GET "http://ts-station-service:12348/api/v1/stationservice/stations" to load all the stations from station service
     RETURN success with list of stations
 END
 
 ENDPOINT: DELETE "/api/v1/adminbasicservice/adminbasic/stations", PARAM: Station s
-    PERFORM REQUEST DELETE "http://ts-station-service:12345/api/v1/stationservice/stations" to delete the station by provided via body payload 's' from station service
+    PERFORM REQUEST DELETE "http://ts-station-service:12348/api/v1/stationservice/stations" to delete the station by provided via body payload 's' from station service
     RETURN success with response payload from station-service
 END
 
 ENDPOINT: PUT "/api/v1/adminbasicservice/adminbasic/stations", PARAM: Station s
-    PERFORM REQUEST PUT "http://ts-station-service:12345/api/v1/stationservice/stations" to update existing station by provided via body payload 's' in station service
+    PERFORM REQUEST PUT "http://ts-station-service:12348/api/v1/stationservice/stations" to update existing station by provided via body payload 's' in station service
     RETURN success with response payload from station-service
 END
 
 ENDPOINT: POST "/api/v1/adminbasicservice/adminbasic/stations", PARAM: Station s
-    PERFORM REQUEST POST "http://ts-station-service:12345/api/v1/stationservice/stations" to add new station with info provided via body payload 's' in station service
+    PERFORM REQUEST POST "http://ts-station-service:12348/api/v1/stationservice/stations" to add new station with info provided via body payload 's' in station service
     RETURN success with response payload from station-service
 END
 

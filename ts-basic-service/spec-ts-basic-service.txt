@@ -8,8 +8,8 @@ ENDPOINT: POST "/api/v1/basicservice/basic/travel", PARAM: Travel info
     RETRIEVE staring station FROM info
     RETRIEVE ending station FROM info
 
-    PERFORM REQUEST GET "http://ts-station-service:12345/api/v1/stationservice/stations/id/{starting station}" check if staring station exists in station service
-    PERFORM REQUEST GET "http://ts-station-service:12345/api/v1/stationservice/stations/id/{ending station}" check if ending station exists in station service
+    PERFORM REQUEST GET "http://ts-station-service:12348/api/v1/stationservice/stations/id/{starting station}" check if staring station exists in station service
+    PERFORM REQUEST GET "http://ts-station-service:12348/api/v1/stationservice/stations/id/{ending station}" check if ending station exists in station service
 
     IF one of the stations doesn't exist THEN
         Prepare error message about it in result object
@@ -36,7 +36,7 @@ ENDPOINT: POST "/api/v1/basicservice/basic/travel", PARAM: Travel info
 END
 
 ENDPOINT: GET "/api/v1/basicservice/basic/{stationName}", PARAM: String stationName
-    PERFORM REQUEST GET "http://ts-station-service:12345/api/v1/stationservice/stations/id/{stationName}" load the station by station name from station service
+    PERFORM REQUEST GET "http://ts-station-service:12348/api/v1/stationservice/stations/id/{stationName}" load the station by station name from station service
     RETURN success with result object returned from station service
 END
 

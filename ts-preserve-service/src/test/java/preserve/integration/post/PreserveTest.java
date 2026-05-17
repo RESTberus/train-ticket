@@ -141,7 +141,7 @@ public class PreserveTest {
     private static GenericContainer<?> stationServiceContainer = new GenericContainer<>(
             DockerImageName.parse("local/ts-station-service:0.1"))
             .withImagePullPolicy(PullPolicy.defaultPolicy())
-            .withExposedPorts(12345)
+            .withExposedPorts(12348)
             .withNetwork(network)
             .withNetworkAliases("ts-station-service")
             .dependsOn(stationServiceMongoDBContainer);
@@ -336,7 +336,7 @@ public class PreserveTest {
         registry.add("ts.seat.service.url", seatServiceContainer::getHost);
         registry.add("ts.seat.service.port", () -> seatServiceContainer.getMappedPort(18898));
         registry.add("ts.station.service.url", stationServiceContainer::getHost);
-        registry.add("ts.station.service.port", () -> stationServiceContainer.getMappedPort(12345));
+        registry.add("ts.station.service.port", () -> stationServiceContainer.getMappedPort(12348));
         registry.add("ts.contacts.service.url", contactsServiceContainer::getHost);
         registry.add("ts.contacts.service.port", () -> contactsServiceContainer.getMappedPort(12347));
         registry.add("ts.security.service.url", securityServiceContainer::getHost);

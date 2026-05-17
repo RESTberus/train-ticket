@@ -23,7 +23,7 @@ public class AdminBasicInfoServiceImpl implements AdminBasicInfoService
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(AdminBasicInfoServiceImpl.class);
 
-    String stations = "http://ts-station-service:12345/api/v1/stationservice/stations";
+    String stations = "http://ts-station-service:12348/api/v1/stationservice/stations";
 
     String trains = "http://ts-train-service:14567/api/v1/trainservice/trains";
 

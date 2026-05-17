@@ -121,7 +121,7 @@ public class PayDifferenceTest {
     private static GenericContainer<?> stationServiceContainer = new GenericContainer<>(
             DockerImageName.parse("local/ts-station-service:0.1"))
             .withImagePullPolicy(PullPolicy.defaultPolicy())
-            .withExposedPorts(12345)
+            .withExposedPorts(12348)
             .withNetwork(network)
             .withNetworkAliases("ts-station-service")
             .dependsOn(stationServiceMongoDBContainer);
@@ -260,7 +260,7 @@ public class PayDifferenceTest {
         registry.add("ts.inside.payment.service.url", insidePaymentServiceContainer::getHost);
         registry.add("ts.inside.payment.service.port", () -> insidePaymentServiceContainer.getMappedPort(18673));
         registry.add("ts.station.service.url", stationServiceContainer::getHost);
-        registry.add("ts.station.service.port", () -> stationServiceContainer.getMappedPort(12345));
+        registry.add("ts.station.service.port", () -> stationServiceContainer.getMappedPort(12348));
         registry.add("ts.payment.service.url", paymentServiceContainer::getHost);
         registry.add("ts.payment.service.port", () -> paymentServiceContainer.getMappedPort(19001));
         registry.add("ts.seat.service.url", seatServiceContainer::getHost);

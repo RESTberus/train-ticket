@@ -228,7 +228,7 @@ services:
           memory: 300M
     restart: always
     ports:
-      - 12345:12345
+      - 12348:12348
     networks:
       - my-network
 

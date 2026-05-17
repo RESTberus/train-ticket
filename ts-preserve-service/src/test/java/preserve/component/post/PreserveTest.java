@@ -116,7 +116,7 @@ public class PreserveTest {
                 .andRespond(withSuccess(objectMapper.writeValueAsString(mockResponse3), MediaType.APPLICATION_JSON));
 
         Response<String> mockResponse4 = new Response<>(1, "Success", "1");
-        uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12345/api/v1/stationservice/stations/id/stationA").build().toUri();
+        uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12348/api/v1/stationservice/stations/id/stationA").build().toUri();
         mockServer.expect(ExpectedCount.twice(), requestTo(uri))
                 .andExpect(method(HttpMethod.GET))
                 .andRespond(withSuccess(objectMapper.writeValueAsString(mockResponse4), MediaType.APPLICATION_JSON));
@@ -584,7 +584,7 @@ public class PreserveTest {
                 .andRespond(withSuccess(objectMapper.writeValueAsString(mockResponse3), MediaType.APPLICATION_JSON));
 
         Response<String> mockResponse4 = new Response<>(1, "Success", "1");
-        uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12345/api/v1/stationservice/stations/id/stationA").build().toUri();
+        uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12348/api/v1/stationservice/stations/id/stationA").build().toUri();
         mockServer.expect(ExpectedCount.twice(), requestTo(uri))
                 .andExpect(method(HttpMethod.GET))
                 .andRespond(withSuccess(objectMapper.writeValueAsString(mockResponse4), MediaType.APPLICATION_JSON));
@@ -806,7 +806,7 @@ public class PreserveTest {
                 .andRespond(withSuccess(objectMapper.writeValueAsString(mockResponse3), MediaType.APPLICATION_JSON));
 
         Response<String> mockResponse4 = new Response<>(1, "Success", "1");
-        uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12345/api/v1/stationservice/stations/id/stationA").build().toUri();
+        uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12348/api/v1/stationservice/stations/id/stationA").build().toUri();
         mockServer.expect(ExpectedCount.twice(), requestTo(uri))
                 .andExpect(method(HttpMethod.GET))
                 .andRespond(withSuccess(objectMapper.writeValueAsString(mockResponse4), MediaType.APPLICATION_JSON));
@@ -918,7 +918,7 @@ public class PreserveTest {
                 .andRespond(withSuccess(objectMapper.writeValueAsString(mockResponse3), MediaType.APPLICATION_JSON));
 
         Response<String> mockResponse4 = new Response<>(0, "Not exists", null);
-        uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12345/api/v1/stationservice/stations/id/1").build().toUri();
+        uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12348/api/v1/stationservice/stations/id/1").build().toUri();
         mockServer.expect(ExpectedCount.twice(), requestTo(uri))
                 .andExpect(method(HttpMethod.GET))
                 .andRespond(withSuccess(objectMapper.writeValueAsString(mockResponse4), MediaType.APPLICATION_JSON));
@@ -1001,7 +1001,7 @@ public class PreserveTest {
                 .andRespond(withSuccess(objectMapper.writeValueAsString(mockResponse3), MediaType.APPLICATION_JSON));
 
         Response<String> mockResponse4 = new Response<>(1, "Success", "1");
-        uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12345/api/v1/stationservice/stations/id/stationA").build().toUri();
+        uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12348/api/v1/stationservice/stations/id/stationA").build().toUri();
         mockServer.expect(ExpectedCount.twice(), requestTo(uri))
                 .andExpect(method(HttpMethod.GET))
                 .andRespond(withSuccess(objectMapper.writeValueAsString(mockResponse4), MediaType.APPLICATION_JSON));
@@ -1135,7 +1135,7 @@ public class PreserveTest {
                 .andRespond(withSuccess(objectMapper.writeValueAsString(mockResponse3), MediaType.APPLICATION_JSON));
 
         Response<String> mockResponse4 = new Response<>(1, "Success", "1");
-        uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12345/api/v1/stationservice/stations/id/stationA").build().toUri();
+        uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12348/api/v1/stationservice/stations/id/stationA").build().toUri();
         mockServer.expect(ExpectedCount.twice(), requestTo(uri))
                 .andExpect(method(HttpMethod.GET))
                 .andRespond(withSuccess(objectMapper.writeValueAsString(mockResponse4), MediaType.APPLICATION_JSON));
@@ -1268,7 +1268,7 @@ public class PreserveTest {
                 .andRespond(withSuccess(objectMapper.writeValueAsString(mockResponse3), MediaType.APPLICATION_JSON));
 
         Response<String> mockResponse4 = new Response<>(1, "Success", "1");
-        uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12345/api/v1/stationservice/stations/id/stationA").build().toUri();
+        uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12348/api/v1/stationservice/stations/id/stationA").build().toUri();
         mockServer.expect(ExpectedCount.twice(), requestTo(uri))
                 .andExpect(method(HttpMethod.GET))
                 .andRespond(withSuccess(objectMapper.writeValueAsString(mockResponse4), MediaType.APPLICATION_JSON));

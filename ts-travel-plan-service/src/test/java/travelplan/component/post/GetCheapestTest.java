@@ -137,7 +137,7 @@ public class GetCheapestTest {
         String stationName = UUID.randomUUID().toString();
         stationNames.add(stationName);
         when(restTemplate.exchange(
-                ArgumentMatchers.contains("http://ts-station-service:12345/api/v1/stationservice/stations/namelist"),
+                ArgumentMatchers.contains("http://ts-station-service:12348/api/v1/stationservice/stations/namelist"),
                 ArgumentMatchers.any(HttpMethod.class),
                 ArgumentMatchers.any(),
                 ArgumentMatchers.any(ParameterizedTypeReference.class)))

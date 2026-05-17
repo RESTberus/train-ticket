@@ -77,14 +77,14 @@ public class SearchMinStopStationsTest {
     public void testSearchMinStopStationsCorrectObject() throws Exception {
         // Arrange
         Response<String> mockResponseId = new Response<>(1, "Success", "1");
-        URI uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12345/api/v1/stationservice/stations/id/StationA").build().toUri();
+        URI uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12348/api/v1/stationservice/stations/id/StationA").build().toUri();
 
         mockServer.expect(ExpectedCount.once(), requestTo(uri))
                 .andExpect(method(HttpMethod.GET))
                 .andRespond(withSuccess(new ObjectMapper().writeValueAsString(mockResponseId), MediaType.APPLICATION_JSON));
 
         mockResponseId = new Response<>(1, "Success", "2");
-        uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12345/api/v1/stationservice/stations/id/StationB").build().toUri();
+        uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12348/api/v1/stationservice/stations/id/StationB").build().toUri();
 
         mockServer.expect(ExpectedCount.once(), requestTo(uri))
                 .andExpect(method(HttpMethod.GET))
@@ -187,7 +187,7 @@ public class SearchMinStopStationsTest {
     public void testSearchMinStopStationsRouteServiceFailure() throws Exception {
         // Arrange
         Response<String> mockResponseId = new Response<>(0, "Not exists", null);
-        URI uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12345/api/v1/stationservice/stations/id/StationA").build().toUri();
+        URI uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12348/api/v1/stationservice/stations/id/StationA").build().toUri();
 
         mockServer.expect(ExpectedCount.once(), requestTo(uri))
                 .andExpect(method(HttpMethod.GET))
@@ -195,7 +195,7 @@ public class SearchMinStopStationsTest {
 
 
         mockResponseId = new Response<>(0, "Not exists", null);
-        uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12345/api/v1/stationservice/stations/id/StationB").build().toUri();
+        uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12348/api/v1/stationservice/stations/id/StationB").build().toUri();
 
         mockServer.expect(ExpectedCount.once(), requestTo(uri))
                 .andExpect(method(HttpMethod.GET))
@@ -343,14 +343,14 @@ public class SearchMinStopStationsTest {
     public void testSearchMinStopStationsTravelServiceFailure() throws Exception {
         // Arrange
         Response<String> mockResponseId = new Response<>(1, "Success", "1");
-        URI uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12345/api/v1/stationservice/stations/id/StationA").build().toUri();
+        URI uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12348/api/v1/stationservice/stations/id/StationA").build().toUri();
 
         mockServer.expect(ExpectedCount.once(), requestTo(uri))
                 .andExpect(method(HttpMethod.GET))
                 .andRespond(withSuccess(new ObjectMapper().writeValueAsString(mockResponseId), MediaType.APPLICATION_JSON));
 
         mockResponseId = new Response<>(1, "Success", "2");
-        uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12345/api/v1/stationservice/stations/id/StationB").build().toUri();
+        uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12348/api/v1/stationservice/stations/id/StationB").build().toUri();
 
         mockServer.expect(ExpectedCount.once(), requestTo(uri))
                 .andExpect(method(HttpMethod.GET))

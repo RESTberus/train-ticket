@@ -61,7 +61,7 @@ public class GetAllFoodTest {
     @Container
     public static GenericContainer<?> stationContainer = new GenericContainer<>(DockerImageName.parse("local/ts-station-service:0.1"))
             .withImagePullPolicy(PullPolicy.defaultPolicy())
-            .withExposedPorts(12345)
+            .withExposedPorts(12348)
             .withNetwork(network)
             .withNetworkAliases("ts-station-service")
             .dependsOn(stationServiceMongoDBContainer);
@@ -99,7 +99,7 @@ public class GetAllFoodTest {
         registry.add("ts.food.map.service.url", foodMapContainer::getHost);
         registry.add("ts.food.map.service.port", () -> foodMapContainer.getMappedPort(18855));
         registry.add("ts.station.service.url", stationContainer::getHost);
-        registry.add("ts.station.service.port", () -> stationContainer.getMappedPort(12345));
+        registry.add("ts.station.service.port", () -> stationContainer.getMappedPort(12348));
         registry.add("ts.travel.service.url", travelContainer::getHost);
         registry.add("ts.travel.service.port", () -> travelContainer.getMappedPort(12346));
         registry.add("ts.route.service.url", routeContainer::getHost);

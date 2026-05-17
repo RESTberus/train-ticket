@@ -11,4 +11,4 @@ spring:
       port: 27017
 
 server:
-  port: 12345
+  port: 12348

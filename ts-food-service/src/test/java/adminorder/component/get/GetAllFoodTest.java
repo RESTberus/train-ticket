@@ -122,7 +122,7 @@ public class GetAllFoodTest {
 
         String startStationId = "13";
         Response<String> responseStartStation = new Response<>(1, "Success", startStationId);
-        uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12345/api/v1/stationservice/stations/id/" + startStation).build().toUri();
+        uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12348/api/v1/stationservice/stations/id/" + startStation).build().toUri();
 
         mockServer.expect(ExpectedCount.once(), requestTo(uri))
                 .andExpect(method(HttpMethod.GET))
@@ -130,7 +130,7 @@ public class GetAllFoodTest {
 
         String endStationId = "21";
         Response<String> responseEndStation = new Response<>(1, "Success", endStationId);
-        uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12345/api/v1/stationservice/stations/id/" + endStation).build().toUri();
+        uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12348/api/v1/stationservice/stations/id/" + endStation).build().toUri();
 
         mockServer.expect(ExpectedCount.once(), requestTo(uri))
                 .andExpect(method(HttpMethod.GET))
@@ -218,7 +218,7 @@ public class GetAllFoodTest {
 
         String startStationId = "13";
         Response<String> responseStartStation = new Response<>(1, "Success", startStationId);
-        uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12345/api/v1/stationservice/stations/id/" + startStation).build().toUri();
+        uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12348/api/v1/stationservice/stations/id/" + startStation).build().toUri();
 
         mockServer.expect(ExpectedCount.once(), requestTo(uri))
                 .andExpect(method(HttpMethod.GET))
@@ -226,7 +226,7 @@ public class GetAllFoodTest {
 
         String endStationId = "21";
         Response<String> responseEndStation = new Response<>(1, "Success", endStationId);
-        uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12345/api/v1/stationservice/stations/id/" + endStation).build().toUri();
+        uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12348/api/v1/stationservice/stations/id/" + endStation).build().toUri();
 
         mockServer.expect(ExpectedCount.once(), requestTo(uri))
                 .andExpect(method(HttpMethod.GET))
@@ -350,7 +350,7 @@ public class GetAllFoodTest {
 
         String startStationId = "13";
         Response<String> responseStartStation = new Response<>(1, "Success", startStationId);
-        uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12345/api/v1/stationservice/stations/id/" + startStation).build().toUri();
+        uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12348/api/v1/stationservice/stations/id/" + startStation).build().toUri();
 
         mockServer.expect(ExpectedCount.once(), requestTo(uri))
                 .andExpect(method(HttpMethod.GET))
@@ -358,7 +358,7 @@ public class GetAllFoodTest {
 
         String endStationId = "21";
         Response<String> responseEndStation = new Response<>(1, "Success", endStationId);
-        uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12345/api/v1/stationservice/stations/id/" + endStation).build().toUri();
+        uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12348/api/v1/stationservice/stations/id/" + endStation).build().toUri();
 
         mockServer.expect(ExpectedCount.once(), requestTo(uri))
                 .andExpect(method(HttpMethod.GET))

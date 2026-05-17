@@ -66,7 +66,7 @@ public class DeleteStationTest {
         Response<Station> stationResponse = new Response<>(1, "Delete success", expectedStation);
 
         when(restTemplate.exchange(
-                ArgumentMatchers.contains("http://ts-station-service:12345/api/v1/stationservice/stations"),
+                ArgumentMatchers.contains("http://ts-station-service:12348/api/v1/stationservice/stations"),
                 ArgumentMatchers.eq(HttpMethod.DELETE),
                 ArgumentMatchers.<HttpEntity<Station>>any(),
                 (Class<Response>) ArgumentMatchers.any()))
@@ -211,7 +211,7 @@ public class DeleteStationTest {
         Station expectedStation = generateRandomStation();
 
         when(restTemplate.exchange(
-                ArgumentMatchers.contains("http://ts-station-service:12345/api/v1/stationservice/stations"),
+                ArgumentMatchers.contains("http://ts-station-service:12348/api/v1/stationservice/stations"),
                 ArgumentMatchers.eq(HttpMethod.DELETE),
                 ArgumentMatchers.<HttpEntity<Station>>any(),
                 (Class<Response>) ArgumentMatchers.any()))

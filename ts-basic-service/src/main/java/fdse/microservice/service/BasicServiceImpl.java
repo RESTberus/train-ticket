@@ -33,7 +33,7 @@ public class BasicServiceImpl implements BasicService
     @Value("${ts.station.service.url:ts-station-service}")
     private String tsStationServiceUrl;
 
-    @Value("${ts.station.service.port:12345}")
+    @Value("${ts.station.service.port:12348}")
     private String tsStationServicePort;
 
     @Value("${ts.train.service.url:ts-train-service}")

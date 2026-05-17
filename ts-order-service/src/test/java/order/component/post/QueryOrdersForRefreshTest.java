@@ -111,7 +111,7 @@ public class QueryOrdersForRefreshTest {
         stationList.add("123");
         stationList.add("321");
         Response<List<String>> responseTrainFood = new Response<>(1, "Success", stationList);
-        URI uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12345/api/v1/stationservice/stations/namelist").build().toUri();
+        URI uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12348/api/v1/stationservice/stations/namelist").build().toUri();
 
         mockServer.expect(ExpectedCount.once(), requestTo(uri))
                 .andExpect(method(HttpMethod.POST))
@@ -174,7 +174,7 @@ public class QueryOrdersForRefreshTest {
         stationList.add("123");
         stationList.add("321");
         Response<List<String>> responseTrainFood = new Response<>(1, "Success", stationList);
-        URI uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12345/api/v1/stationservice/stations/namelist").build().toUri();
+        URI uri = UriComponentsBuilder.fromUriString("http://ts-station-service:12348/api/v1/stationservice/stations/namelist").build().toUri();
 
         mockServer.expect(ExpectedCount.once(), requestTo(uri))
                 .andExpect(method(HttpMethod.POST))

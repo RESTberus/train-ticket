@@ -163,7 +163,7 @@ public class TripDetailTest {
     private static final GenericContainer<?> stationServiceContainer = new GenericContainer<>(
             DockerImageName.parse("local/ts-station-service:0.1"))
             .withImagePullPolicy(PullPolicy.defaultPolicy())
-            .withExposedPorts(12345)
+            .withExposedPorts(12348)
             .withNetwork(network)
             .withNetworkAliases("ts-station-service")
             .dependsOn(stationServiceMongoDBContainer);
@@ -200,7 +200,7 @@ public class TripDetailTest {
         registry.add("ts.order.other.service.url", orderOtherServiceContainer::getHost);
         registry.add("ts.order.other.service.port", () -> orderOtherServiceContainer.getMappedPort(12032));
         registry.add("ts.station.service.url", stationServiceContainer::getHost);
-        registry.add("ts.station.service.port", () -> stationServiceContainer.getMappedPort(12345));
+        registry.add("ts.station.service.port", () -> stationServiceContainer.getMappedPort(12348));
         registry.add("ts.basic.service.url", basicServiceContainer::getHost);
         registry.add("ts.basic.service.port", () -> basicServiceContainer.getMappedPort(15680));
         registry.add("ts.config.service.url", configServiceContainer::getHost);

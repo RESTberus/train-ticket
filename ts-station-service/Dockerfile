@@ -32,5 +32,5 @@ COPY --from=build /app/ts-station-service/target/classes/ /api/classes/
 COPY infrastructure/jacoco /infrastructure/jacoco
 CMD ["java", "-javaagent:/infrastructure/jacoco/org.jacoco.agent-0.8.7-runtime.jar=includes=*,output=tcpserver,port=12345,address=*", "-Xmx200m", "-jar", "/app/service.jar"]
 
-EXPOSE 12345
+EXPOSE 12348
 

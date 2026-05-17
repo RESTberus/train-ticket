@@ -88,7 +88,7 @@ public class SearchQuickestResultTest {
     @Container
     public static GenericContainer<?> stationContainer = new GenericContainer<>(DockerImageName.parse("local/ts-station-service:0.1"))
             .withImagePullPolicy(PullPolicy.defaultPolicy())
-            .withExposedPorts(12345)
+            .withExposedPorts(12348)
             .withNetwork(network)
             .withNetworkAliases("ts-station-service")
             .dependsOn(stationServiceMongoDBContainer);
@@ -205,7 +205,7 @@ public class SearchQuickestResultTest {
         registry.add("ts.travel2.service.url", travel2Container::getHost);
         registry.add("ts.travel2.service.port", () -> travel2Container.getMappedPort(16346));
         registry.add("ts.station.service.url", stationContainer::getHost);
-        registry.add("ts.station.service.port", () -> stationContainer.getMappedPort(12345));
+        registry.add("ts.station.service.port", () -> stationContainer.getMappedPort(12348));
         registry.add("ts.route.service.url", routeContainer::getHost);
         registry.add("ts.route.service.port", () -> routeContainer.getMappedPort(11178));
         registry.add("ts.ticketinfo.service.url", ticketInfoContainer::getHost);

@@ -96,13 +96,13 @@ public class QueryForTravelTest {
         Response<Route> routeResponse = new Response<>(1, "Success", route);
         Response<PriceConfig> priceConfigResponse = new Response<>(1, "Success", priceConfig);
 
-        mockServer.expect(requestTo("http://ts-station-service:12345/api/v1/stationservice/stations/id/startingPlace"))
+        mockServer.expect(requestTo("http://ts-station-service:12348/api/v1/stationservice/stations/id/startingPlace"))
                 .andExpect(MockRestRequestMatchers.method(HttpMethod.GET))
                 .andRespond(withStatus(HttpStatus.OK)
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(new ObjectMapper().writeValueAsString(stationResponse1)));
 
-        mockServer.expect(requestTo("http://ts-station-service:12345/api/v1/stationservice/stations/id/endPlace"))
+        mockServer.expect(requestTo("http://ts-station-service:12348/api/v1/stationservice/stations/id/endPlace"))
                 .andExpect(MockRestRequestMatchers.method(HttpMethod.GET))
                 .andRespond(withStatus(HttpStatus.OK)
                         .contentType(MediaType.APPLICATION_JSON)
@@ -126,13 +126,13 @@ public class QueryForTravelTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(new ObjectMapper().writeValueAsString(priceConfigResponse)));
 
-        mockServer.expect(requestTo("http://ts-station-service:12345/api/v1/stationservice/stations/id/startingPlace"))
+        mockServer.expect(requestTo("http://ts-station-service:12348/api/v1/stationservice/stations/id/startingPlace"))
                 .andExpect(MockRestRequestMatchers.method(HttpMethod.GET))
                 .andRespond(withStatus(HttpStatus.OK)
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(new ObjectMapper().writeValueAsString(stationResponse1)));
 
-        mockServer.expect(requestTo("http://ts-station-service:12345/api/v1/stationservice/stations/id/endPlace"))
+        mockServer.expect(requestTo("http://ts-station-service:12348/api/v1/stationservice/stations/id/endPlace"))
                 .andExpect(MockRestRequestMatchers.method(HttpMethod.GET))
                 .andRespond(withStatus(HttpStatus.OK)
                         .contentType(MediaType.APPLICATION_JSON)
@@ -204,13 +204,13 @@ public class QueryForTravelTest {
         Response<Route> routeResponse = new Response<>(1, "Success", route);
         Response<PriceConfig> priceConfigResponse = new Response<>(1, "Success", priceConfig);
 
-        mockServer.expect(requestTo("http://ts-station-service:12345/api/v1/stationservice/stations/id/NotstartingPlace"))
+        mockServer.expect(requestTo("http://ts-station-service:12348/api/v1/stationservice/stations/id/NotstartingPlace"))
                 .andExpect(MockRestRequestMatchers.method(HttpMethod.GET))
                 .andRespond(withStatus(HttpStatus.OK)
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(new ObjectMapper().writeValueAsString(stationResponse1)));
 
-        mockServer.expect(requestTo("http://ts-station-service:12345/api/v1/stationservice/stations/id/endPlace"))
+        mockServer.expect(requestTo("http://ts-station-service:12348/api/v1/stationservice/stations/id/endPlace"))
                 .andExpect(MockRestRequestMatchers.method(HttpMethod.GET))
                 .andRespond(withStatus(HttpStatus.OK)
                         .contentType(MediaType.APPLICATION_JSON)
@@ -234,13 +234,13 @@ public class QueryForTravelTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(new ObjectMapper().writeValueAsString(priceConfigResponse)));
 
-        mockServer.expect(requestTo("http://ts-station-service:12345/api/v1/stationservice/stations/id/NotstartingPlace"))
+        mockServer.expect(requestTo("http://ts-station-service:12348/api/v1/stationservice/stations/id/NotstartingPlace"))
                 .andExpect(MockRestRequestMatchers.method(HttpMethod.GET))
                 .andRespond(withStatus(HttpStatus.OK)
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(new ObjectMapper().writeValueAsString(stationResponse1)));
 
-        mockServer.expect(requestTo("http://ts-station-service:12345/api/v1/stationservice/stations/id/endPlace"))
+        mockServer.expect(requestTo("http://ts-station-service:12348/api/v1/stationservice/stations/id/endPlace"))
                 .andExpect(MockRestRequestMatchers.method(HttpMethod.GET))
                 .andRespond(withStatus(HttpStatus.OK)
                         .contentType(MediaType.APPLICATION_JSON)
@@ -310,13 +310,13 @@ public class QueryForTravelTest {
         Response<Route> routeResponse = new Response<>(1, "Success", route);
         Response<PriceConfig> priceConfigResponse = new Response<>(1, "Success", priceConfig);
 
-        mockServer.expect(requestTo("http://ts-station-service:12345/api/v1/stationservice/stations/id/startingPlace"))
+        mockServer.expect(requestTo("http://ts-station-service:12348/api/v1/stationservice/stations/id/startingPlace"))
                 .andExpect(MockRestRequestMatchers.method(HttpMethod.GET))
                 .andRespond(withStatus(HttpStatus.OK)
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(new ObjectMapper().writeValueAsString(stationResponse)));
 
-        mockServer.expect(requestTo("http://ts-station-service:12345/api/v1/stationservice/stations/id/endPlace"))
+        mockServer.expect(requestTo("http://ts-station-service:12348/api/v1/stationservice/stations/id/endPlace"))
                 .andExpect(MockRestRequestMatchers.method(HttpMethod.GET))
                 .andRespond(withStatus(HttpStatus.OK)
                         .contentType(MediaType.APPLICATION_JSON)
@@ -340,13 +340,13 @@ public class QueryForTravelTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(new ObjectMapper().writeValueAsString(priceConfigResponse)));
 
-        mockServer.expect(requestTo("http://ts-station-service:12345/api/v1/stationservice/stations/id/startingPlace"))
+        mockServer.expect(requestTo("http://ts-station-service:12348/api/v1/stationservice/stations/id/startingPlace"))
                 .andExpect(MockRestRequestMatchers.method(HttpMethod.GET))
                 .andRespond(withStatus(HttpStatus.OK)
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(new ObjectMapper().writeValueAsString(stationResponse)));
 
-        mockServer.expect(requestTo("http://ts-station-service:12345/api/v1/stationservice/stations/id/endPlace"))
+        mockServer.expect(requestTo("http://ts-station-service:12348/api/v1/stationservice/stations/id/endPlace"))
                 .andExpect(MockRestRequestMatchers.method(HttpMethod.GET))
                 .andRespond(withStatus(HttpStatus.OK)
                         .contentType(MediaType.APPLICATION_JSON)
@@ -415,13 +415,13 @@ public class QueryForTravelTest {
         Response<Route> routeResponse = new Response<>(0, "No content with the routeId", null);
         Response<PriceConfig> priceConfigResponse = new Response<>(1, "Success", priceConfig);
 
-        mockServer.expect(requestTo("http://ts-station-service:12345/api/v1/stationservice/stations/id/startingPlace"))
+        mockServer.expect(requestTo("http://ts-station-service:12348/api/v1/stationservice/stations/id/startingPlace"))
                 .andExpect(MockRestRequestMatchers.method(HttpMethod.GET))
                 .andRespond(withStatus(HttpStatus.OK)
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(new ObjectMapper().writeValueAsString(stationResponse1)));
 
-        mockServer.expect(requestTo("http://ts-station-service:12345/api/v1/stationservice/stations/id/endPlace"))
+        mockServer.expect(requestTo("http://ts-station-service:12348/api/v1/stationservice/stations/id/endPlace"))
                 .andExpect(MockRestRequestMatchers.method(HttpMethod.GET))
                 .andRespond(withStatus(HttpStatus.OK)
                         .contentType(MediaType.APPLICATION_JSON)
@@ -445,13 +445,13 @@ public class QueryForTravelTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(new ObjectMapper().writeValueAsString(priceConfigResponse)));
 
-        mockServer.expect(requestTo("http://ts-station-service:12345/api/v1/stationservice/stations/id/startingPlace"))
+        mockServer.expect(requestTo("http://ts-station-service:12348/api/v1/stationservice/stations/id/startingPlace"))
                 .andExpect(MockRestRequestMatchers.method(HttpMethod.GET))
                 .andRespond(withStatus(HttpStatus.OK)
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(new ObjectMapper().writeValueAsString(stationResponse1)));
 
-        mockServer.expect(requestTo("http://ts-station-service:12345/api/v1/stationservice/stations/id/endPlace"))
+        mockServer.expect(requestTo("http://ts-station-service:12348/api/v1/stationservice/stations/id/endPlace"))
                 .andExpect(MockRestRequestMatchers.method(HttpMethod.GET))
                 .andRespond(withStatus(HttpStatus.OK)
                         .contentType(MediaType.APPLICATION_JSON)
@@ -523,13 +523,13 @@ public class QueryForTravelTest {
         Response<Route> routeResponse = new Response<>(1, "Success", route);
         Response<PriceConfig> priceConfigResponse = new Response<>(0, "No that config", null);
 
-        mockServer.expect(requestTo("http://ts-station-service:12345/api/v1/stationservice/stations/id/startingPlace"))
+        mockServer.expect(requestTo("http://ts-station-service:12348/api/v1/stationservice/stations/id/startingPlace"))
                 .andExpect(MockRestRequestMatchers.method(HttpMethod.GET))
                 .andRespond(withStatus(HttpStatus.OK)
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(new ObjectMapper().writeValueAsString(stationResponse1)));
 
-        mockServer.expect(requestTo("http://ts-station-service:12345/api/v1/stationservice/stations/id/endPlace"))
+        mockServer.expect(requestTo("http://ts-station-service:12348/api/v1/stationservice/stations/id/endPlace"))
                 .andExpect(MockRestRequestMatchers.method(HttpMethod.GET))
                 .andRespond(withStatus(HttpStatus.OK)
                         .contentType(MediaType.APPLICATION_JSON)
@@ -553,13 +553,13 @@ public class QueryForTravelTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(new ObjectMapper().writeValueAsString(priceConfigResponse)));
 
-        mockServer.expect(requestTo("http://ts-station-service:12345/api/v1/stationservice/stations/id/startingPlace"))
+        mockServer.expect(requestTo("http://ts-station-service:12348/api/v1/stationservice/stations/id/startingPlace"))
                 .andExpect(MockRestRequestMatchers.method(HttpMethod.GET))
                 .andRespond(withStatus(HttpStatus.OK)
                         .contentType(MediaType.APPLICATION_JSON)
                         .body(new ObjectMapper().writeValueAsString(stationResponse1)));
 
-        mockServer.expect(requestTo("http://ts-station-service:12345/api/v1/stationservice/stations/id/endPlace"))
+        mockServer.expect(requestTo("http://ts-station-service:12348/api/v1/stationservice/stations/id/endPlace"))
                 .andExpect(MockRestRequestMatchers.method(HttpMethod.GET))
                 .andRespond(withStatus(HttpStatus.OK)
                         .contentType(MediaType.APPLICATION_JSON)

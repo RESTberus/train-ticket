@@ -72,7 +72,7 @@ public class QueryForTravelTest {
     public static GenericContainer<?> stationServiceContainer = new GenericContainer<>(
             DockerImageName.parse("local/ts-station-service:0.1"))
             .withImagePullPolicy(PullPolicy.defaultPolicy())
-            .withExposedPorts(12345)
+            .withExposedPorts(12348)
             .withNetwork(network)
             .withNetworkAliases("ts-station-service")
             .dependsOn(stationServiceMongoDbContainer);
@@ -111,7 +111,7 @@ public class QueryForTravelTest {
     @DynamicPropertySource
     static void properties(DynamicPropertyRegistry registry) {
         registry.add("ts.station.service.url", stationServiceContainer::getHost);
-        registry.add("ts.station.service.port", () -> stationServiceContainer.getMappedPort(12345));
+        registry.add("ts.station.service.port", () -> stationServiceContainer.getMappedPort(12348));
         registry.add("ts.train.service.url", trainServiceContainer::getHost);
         registry.add("ts.train.service.port", () -> trainServiceContainer.getMappedPort(14567));
         registry.add("ts.route.service.url", routeServiceContainer::getHost);

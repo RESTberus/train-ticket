@@ -65,7 +65,7 @@ public class PreserveOtherServiceImpl implements PreserveOtherService
     @Value("${ts.station.service.url:ts-station-service}")
     private String tsStationServiceUrl;
 
-    @Value("${ts.station.service.port:12345}")
+    @Value("${ts.station.service.port:12348}")
     private String tsStationServicePort;
 
     @Value("${ts.security.service.url:ts-security-service}")

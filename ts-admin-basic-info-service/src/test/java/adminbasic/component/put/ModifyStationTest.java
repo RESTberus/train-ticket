@@ -63,7 +63,7 @@ public class ModifyStationTest {
         Response<Station> stationResponse = new Response<>(1, "Update success", expectedStation);
 
         when(restTemplate.exchange(
-                ArgumentMatchers.contains("http://ts-station-service:12345/api/v1/stationservice/stations"),
+                ArgumentMatchers.contains("http://ts-station-service:12348/api/v1/stationservice/stations"),
                 ArgumentMatchers.eq(HttpMethod.PUT),
                 ArgumentMatchers.<HttpEntity<Station>>any(),
                 (Class<Response>) ArgumentMatchers.any()))
@@ -194,7 +194,7 @@ public class ModifyStationTest {
         Station expectedStation = generateRandomStation();
 
         when(restTemplate.exchange(
-                ArgumentMatchers.contains("http://ts-station-service:12345/api/v1/stationservice/stations"),
+                ArgumentMatchers.contains("http://ts-station-service:12348/api/v1/stationservice/stations"),
                 ArgumentMatchers.eq(HttpMethod.PUT),
                 ArgumentMatchers.<HttpEntity<Station>>any(),
                 (Class<Response>) ArgumentMatchers.any()))

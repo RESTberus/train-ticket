@@ -19,13 +19,13 @@
         # For station service
 
         location /station/create {
-            proxy_pass   http://ts-station-service:12345;
+            proxy_pass   http://ts-station-service:12348;
         }
         location /station/exist {
-            proxy_pass   http://ts-station-service:12345;
+            proxy_pass   http://ts-station-service:12348;
         }
         location /station/delete {
-            proxy_pass   http://ts-station-service:12345;
+            proxy_pass   http://ts-station-service:12348;
         }
 
 

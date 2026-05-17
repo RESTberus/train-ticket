@@ -65,7 +65,7 @@ public class GetAllStationsTest {
         Response<List<Station>> stationResponse = new Response<>(1, "Find all content", stationList);
 
         when(restTemplate.exchange(
-                ArgumentMatchers.contains("http://ts-station-service:12345/api/v1/stationservice/stations"),
+                ArgumentMatchers.contains("http://ts-station-service:12348/api/v1/stationservice/stations"),
                 ArgumentMatchers.eq(HttpMethod.GET),
                 ArgumentMatchers.any(HttpEntity.class),
                 (Class<Response>) ArgumentMatchers.any()))
@@ -104,7 +104,7 @@ public class GetAllStationsTest {
     public void testGetAllStationsStationServiceCrash() throws Exception {
         // Arrange
         when(restTemplate.exchange(
-                ArgumentMatchers.contains("http://ts-station-service:12345/api/v1/stationservice/stations"),
+                ArgumentMatchers.contains("http://ts-station-service:12348/api/v1/stationservice/stations"),
                 ArgumentMatchers.eq(HttpMethod.GET),
                 ArgumentMatchers.any(HttpEntity.class),
                 (Class<Response>) ArgumentMatchers.any()))

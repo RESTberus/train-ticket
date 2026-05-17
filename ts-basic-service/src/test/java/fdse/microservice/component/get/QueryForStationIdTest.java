@@ -57,7 +57,7 @@ public class QueryForStationIdTest {
         Response<String> stationResponse = new Response<>(1, "Success", expectedStationId);
 
         when(restTemplate.exchange(
-                ArgumentMatchers.contains("http://ts-station-service:12345/api/v1/stationservice/stations/id/" + expectedStationName),
+                ArgumentMatchers.contains("http://ts-station-service:12348/api/v1/stationservice/stations/id/" + expectedStationName),
                 ArgumentMatchers.eq(HttpMethod.GET),
                 ArgumentMatchers.any(HttpEntity.class),
                 (Class<Response>) ArgumentMatchers.any()))
@@ -92,7 +92,7 @@ public class QueryForStationIdTest {
 
         Response<String> stationResponse = new Response<>(0, "Not exists", expectedStationName);
         when(restTemplate.exchange(
-                ArgumentMatchers.contains("http://ts-station-service:12345/api/v1/stationservice/stations/id/" + expectedStationName),
+                ArgumentMatchers.contains("http://ts-station-service:12348/api/v1/stationservice/stations/id/" + expectedStationName),
                 ArgumentMatchers.eq(HttpMethod.GET),
                 ArgumentMatchers.any(HttpEntity.class),
                 (Class<Response>) ArgumentMatchers.any()))
@@ -126,7 +126,7 @@ public class QueryForStationIdTest {
         String expectedStationName = UUID.randomUUID().toString();
 
         when(restTemplate.exchange(
-                ArgumentMatchers.contains("http://ts-station-service:12345/api/v1/stationservice/stations/id/" + expectedStationName),
+                ArgumentMatchers.contains("http://ts-station-service:12348/api/v1/stationservice/stations/id/" + expectedStationName),
                 ArgumentMatchers.eq(HttpMethod.GET),
                 ArgumentMatchers.any(HttpEntity.class),
                 (Class<Response>) ArgumentMatchers.any()))

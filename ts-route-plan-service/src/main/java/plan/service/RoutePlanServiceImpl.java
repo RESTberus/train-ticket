@@ -51,7 +51,7 @@ public class RoutePlanServiceImpl implements RoutePlanService
     @Value("${ts.station.service.url:ts-station-service}")
     private String tsStationServiceUrl;
 
-    @Value("${ts.station.service.port:12345}")
+    @Value("${ts.station.service.port:12348}")
     private String tsStationServicePort;
 
     @Override
