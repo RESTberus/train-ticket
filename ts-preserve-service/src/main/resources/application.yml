@@ -16,6 +16,8 @@ spring:
       remote-fields:
         - x-request-id
     propagation:
-      type: b3
+      type: 
+        - B3
+        - W3C
   application:
     name: ts-preserve-service
