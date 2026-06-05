@@ -6,6 +6,7 @@ spring:
     banner-mode: "off"
     lazy-initialization: true
   sleuth:
+    trace-id128: true
     sampler:
       probability: 1.0
     baggage:
