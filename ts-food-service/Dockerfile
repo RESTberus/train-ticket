@@ -30,7 +30,7 @@ COPY --from=build /app/ts-food-service/target/classes/ /api/classes/
 
 # 3. Add jacoco infrastructure files to image
 COPY infrastructure/jacoco /infrastructure/jacoco
-CMD ["java", "-javaagent:/infrastructure/jacoco/org.jacoco.agent-0.8.7-runtime.jar=includes=*,output=tcpserver,port=12345,address=*", "-Xmx200m", "-jar", "/app/service.jar"]
+CMD ["java", "-javaagent:/infrastructure/jacoco/org.jacoco.agent-0.8.7-runtime.jar=includes=*,output=tcpserver,port=12345,address=*", "-jar", "/app/service.jar"]
 
 EXPOSE 18856
 
