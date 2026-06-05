@@ -4,6 +4,20 @@ server:
 spring:
   application:
     name: ts-user-service
+  main:
+    banner-mode: "off"
+    lazy-initialization: true
+  sleuth:
+    trace-id128: true
+    sampler:
+      probability: 1.0
+    baggage:
+      correlation-fields: 
+        - x-request-id
+      remote-fields:
+        - x-request-id
+    propagation:
+      type: b3
   data:
     mongodb:
       host: ts-user-mongo
