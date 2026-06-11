@@ -37,7 +37,8 @@ public class UserServiceImpl implements UserService
     @Autowired
     private UserRepository userRepository;
 
-    private RestTemplate restTemplate = new RestTemplate();
+    @Autowired
+    private RestTemplate restTemplate;
 
     @Override
     public Response saveUser(UserDto userDto, HttpHeaders headers)
