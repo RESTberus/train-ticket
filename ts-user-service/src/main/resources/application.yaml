@@ -17,7 +17,8 @@ spring:
       remote-fields:
         - x-request-id
     propagation:
-      type: b3
+      type:
+        - W3C
   data:
     mongodb:
       host: ts-user-mongo
