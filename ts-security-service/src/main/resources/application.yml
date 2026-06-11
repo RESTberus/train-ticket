@@ -26,4 +26,8 @@ spring:
 
 # HTTP Server
 server:
+  error:
+    include-message: always
+    include-exception: true
+    include-stacktrace: always
   port: 11188 # HTTP (Tomcat) port

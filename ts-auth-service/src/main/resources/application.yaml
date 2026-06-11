@@ -1,5 +1,10 @@
 server:
+  error:
+    include-message: always
+    include-exception: true
+    include-stacktrace: always
   port: 12340
+
 spring:
   application:
     name: ts-auth-service

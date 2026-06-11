@@ -1,5 +1,9 @@
 # HTTP Server
 server:
+  error:
+    include-message: always
+    include-exception: true
+    include-stacktrace: always
   port: 14322 # HTTP (Tomcat) port
 
 spring:
