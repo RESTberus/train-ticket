@@ -16,8 +16,9 @@ spring:
         - x-request-id
     propagation:
       type: 
-        - B3
         - W3C
+    zipkin:
+      enabled: false
 
   application:
     name: ts-verification-code-service

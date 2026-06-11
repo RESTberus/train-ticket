@@ -17,7 +17,6 @@ spring:
         - x-request-id
     propagation:
       type: 
-        - B3
         - W3C
   application:
     name: ts-preserve-service
