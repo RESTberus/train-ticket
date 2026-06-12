@@ -10,7 +10,6 @@ spring:
     name: ts-user-service
   main:
     banner-mode: "off"
-    lazy-initialization: true
   sleuth:
     trace-id128: true
     sampler:
